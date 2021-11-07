@@ -1,13 +1,16 @@
 /*
-    Get date and time - uses the ezTime library at https://github.com/ropg/ezTime -
-    and then show data from a DHT22 on a web page served by the Huzzah and
-    push data to an MQTT server - uses library from https://pubsubclient.knolleary.net
-
-    Duncan Wilson
-    CASA0014 - 2 - Plant Monitor Workshop
-    May 2020
+    * different aim before coding
+    1.connecting wifi
+    2.connecting Mqtt server
+    3.get the values of the plant and refresh the data-time- main loop
+    4.pushing the data to the mqtt server
+    5.showing the data in the grafana page
 */
 
+/*  diving code into 5 parts 
+
+    1.Import libraries part 
+ */
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <ezTime.h>
@@ -15,6 +18,12 @@
 #include <DHT.h>
 #include <DHT_U.h>
 
+/* 2.Define part
+ *  define pin for each unit and create variables and the type of the DTH 
+    Pinsetting:   DHTpin;soilpin;sensorVCC;build-in Led
+    variables:    Temperature;Humidity;Moisture
+    DHTTYPE and initialize DHT sensor
+*/
 #define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
 
 // Sensors - DHT22 and Nails
@@ -26,13 +35,6 @@ int Moisture = 1; // initial value just in case web page is loaded before readMo
 int sensorVCC = 13;
 int blueLED = 2;
 DHT dht(DHTPin, DHTTYPE);   // Initialize DHT sensor.
-
-
-// Wifi and MQTT
-#include "arduino_secrets.h" 
-/*
-**** please enter your sensitive data in the Secret tab/arduino_secrets.h
-**** using format below
 
 #define SECRET_SSID "ssid name"
 #define SECRET_PASS "ssid password"
@@ -56,7 +58,9 @@ int value = 0;
 // Date and time
 Timezone GB;
 
-
+/*3. setup functions
+ * 
+ *  define which pin act as Output or Input:                
 
 void setup() {
   // Set up LED to be controllable via broker
@@ -91,6 +95,8 @@ void setup() {
 
 }
 
+/*4.loop
+ */
 void loop() {
   // handler for receiving requests to webserver
   server.handleClient();
@@ -103,7 +109,9 @@ void loop() {
   
   client.loop();
 }
-
+/*5.The rest of the code is to define all the functions that are called in the setup() and loop()
+  */
+  
 void readMoisture(){
   
   // power the sensor
