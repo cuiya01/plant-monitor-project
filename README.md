@@ -14,10 +14,10 @@
 ### Software
 * Arduino IDE Arduino IDE 
 * CP210*VCPDriver CP210Driver 
-* MQTT Explorer MQTT Explore 
-* Raspberry pi imager Raspberry 
-* Telegraf Telegraf 
-* InfluxDB InfluxDB 
+* MQTT 
+* Raspberry pi 
+* Telegraf
+* InfluxDB
 * Grafana
 ## Steps
 1.Setting up Feather Huzzah ESP8266 Wifi
