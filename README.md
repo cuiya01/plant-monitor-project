@@ -25,7 +25,7 @@
 * Installing CP210*VCPDriver
 * Installing the ESP8266 Board Package
 * Setup ESP8266 Support:CPU frequency-80 MHz, Upload Speed-115200, matching COM port-"SLAB_USBtoUART"
-* Connecting via WiFI TestWifi
+* Connecting via WiFI
 
 2.Setting the time on the Feather Huzzah ESP8266
 * Installing ezTime library on Arduino
